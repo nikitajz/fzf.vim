@@ -37,8 +37,8 @@ MIME=$(file --brief --mime-type -- "$FILE")
 
 if [ -d "$FILE" ]; then
 	tree -C "$FILE" -L 3 | head -n 50
-elif [[ "$MIME" == "application/octet-stream" ]]; then
-	echo "Binary file:"
+elif [[ "$MIME" == "application/"* || "$MIME" == "video/"* || "$MIME" == "audio/"* || "$MIME" == "image/"* || "$MIME" == "font/"* ]]; then
+	echo "File information for non-text type:"
 	file -b "$FILE"
 else
 	if [ "${BATNAME:+x}" ]; then
